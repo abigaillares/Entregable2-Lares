@@ -79,7 +79,6 @@ function cancelarTurno() {
         alert("❌ Número de turno inválido.");
     }
 } 
-
 function iniciarSimulador() {
     let opcion;
     do {
