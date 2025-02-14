@@ -1,18 +1,49 @@
-// Array para almacenar turnos
 const turnos = [];
 
-// Función para agendar un turno
-function agendarTurno(nombre, fecha) {
-    if (nombre && fecha) {
-        turnos.push({ nombre, fecha });
-        console.log(`✅ Turno agendado: ${nombre} - ${fecha}`);
-        alert(`Turno agendado para ${nombre} el ${fecha}`);
-    } else {
-        alert("❌ Datos inválidos. Intente nuevamente.");
+
+function esFechaValida(fecha) {
+    let partes = fecha.split("/");
+    
+    if (partes.length !== 3) {
+        return false; 
     }
+
+    let dia = parseInt(partes[0]);
+    let mes = parseInt(partes[1]);
+    let anio = parseInt(partes[2]);
+
+    
+    if (isNaN(dia) || isNaN(mes) || isNaN(anio)) {
+        return false;
+    }
+    if (dia < 1 || dia > 31 || mes < 1 || mes > 12 || anio < 2024) {
+        return false;
+    }
+
+    return true;
 }
 
-// Función para mostrar todos los turnos
+function agendarTurno() {
+    let nombre = prompt("Ingrese el nombre del cliente:");
+    
+    if (!nombre) {
+        alert("❌ Nombre inválido. Intente nuevamente.");
+        return;
+    }
+
+    let fecha;
+    do {
+        fecha = prompt("Ingrese la fecha del turno (DD/MM/AAAA):");
+        if (!esFechaValida(fecha)) {
+            alert("⚠️ Fecha inválida. Use el formato DD/MM/AAAA y valores numéricos correctos.");
+        }
+    } while (!esFechaValida(fecha));
+
+    turnos.push({ nombre, fecha });
+    console.log(`✅ Turno agendado: ${nombre} - ${fecha}`);
+    alert(`Turno agendado para ${nombre} el ${fecha}`);
+}
+
 function listarTurnos() {
     if (turnos.length === 0) {
         console.log("⚠️ No hay turnos agendados.");
@@ -20,14 +51,24 @@ function listarTurnos() {
         return;
     }
 
-    console.log("📅 Lista de turnos:");
+    let mensaje = "📅 Lista de turnos:\n";
     turnos.forEach((turno, index) => {
-        console.log(`${index + 1}. ${turno.nombre} - ${turno.fecha}`);
+        mensaje += `${index + 1}. ${turno.nombre} - ${turno.fecha}\n`;
     });
+
+    console.log(mensaje);
+    alert(mensaje);
 }
 
-// Función para cancelar un turno por número
-function cancelarTurno(numero) {
+function cancelarTurno() {
+    if (turnos.length === 0) {
+        alert("⚠️ No hay turnos para cancelar.");
+        return;
+    }
+
+    listarTurnos();
+    let numero = prompt("Ingrese el número de turno a cancelar:");
+
     let index = parseInt(numero) - 1;
     
     if (!isNaN(index) && index >= 0 && index < turnos.length) {
@@ -37,9 +78,8 @@ function cancelarTurno(numero) {
     } else {
         alert("❌ Número de turno inválido.");
     }
-}
+} 
 
-// Función principal del simulador
 function iniciarSimulador() {
     let opcion;
     do {
@@ -47,17 +87,13 @@ function iniciarSimulador() {
         
         switch (opcion) {
             case "1":
-                let nombre = prompt("Ingrese el nombre del cliente:");
-                let fecha = prompt("Ingrese la fecha del turno (DD/MM/AAAA):");
-                agendarTurno(nombre, fecha);
+                agendarTurno();
                 break;
             case "2":
                 listarTurnos();
                 break;
             case "3":
-                listarTurnos();
-                let num = prompt("Ingrese el número de turno a cancelar:");
-                cancelarTurno(num);
+                cancelarTurno();
                 break;
             case "4":
                 alert("👋 Saliendo del simulador.");
@@ -68,5 +104,4 @@ function iniciarSimulador() {
     } while (opcion !== "4");
 }
 
-// Iniciar simulador al cargar la página
 iniciarSimulador();
