@@ -3,12 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión de Turnos</title>
+    <title>Centro de Estética</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <script defer src="js/main.js" ></script>
 </head>
 <body>
-    <h1>Simulador de Gestión de Turnos </h1>
-    <p>permite agendar turnos de clientes, ver la lista de turnos y eliminarlos. La interacción se realiza mediante la consola.</p>
-
-    <script src="js/main.js"></script>
+    <header>
+        <h1>Centro de Estética</h1>
+    </header>
+    
+    <main>
+        <section class="descripcion">
+            <p class="descripcion">
+                <p>Este simulador permite seleccionar uno o varios servicios, elegir fecha y hora, y gestionar turnos. </p>
+            
+            </p>
+        </section>
+        
+        <section class="servicios">
+            <h2>Servicios Disponibles</h2>
+            <div id="listaServicios"></div>
+        </section>
+    </main>
+    
+    <div id="reserva" class="modal oculto">
+        <div class="modal-contenido">
+            <div id="calendario"></div> 
+        </div>
+    </div>
+    
 </body>
 </html>
