@@ -123,13 +123,9 @@ function mostrarTurnos() {
     const contenedorTurnos = document.getElementById("turnosAgendados") || document.createElement("div");
     contenedorTurnos.id = "turnosAgendados";
     document.body.appendChild(contenedorTurnos);
-    contenedorTurnos.style.position = "absolute";
-    contenedorTurnos.style.top = "10px";
-    contenedorTurnos.style.left = "10px";
-    contenedorTurnos.style.width = "250px";
 
     if (turnos.length === 0) {
-        contenedorTurnos.innerHTML = "<p>No hay turnos agendados.</p>";
+        contenedorTurnos.innerHTML = "<p>Todavía no tienes turnos.</p>";
         return;
     }
 
