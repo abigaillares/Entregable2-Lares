@@ -60,7 +60,6 @@ button {
 button:hover {
     background-color: #218838;
 }
-
 .modal {
     position: fixed;
     top: 0;
@@ -80,8 +79,11 @@ button:hover {
     border-radius: 8px;
     width: 90%;
     max-width: 600px;
+    max-height: 550px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    overflow: auto;
 }
+
 
 .oculto {
     display: none;

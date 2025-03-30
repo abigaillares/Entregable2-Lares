@@ -57,6 +57,7 @@ document.addEventListener("click", (e) => {
     serviciosSeleccionados.splice(index, 1);
     actualizarAlertFlotante();
   }
+  
 });
 
 
@@ -138,6 +139,8 @@ function confirmarTurnos() {
   actualizarAlertFlotante();
   mostrarTurnos();
   document.getElementById("reserva").classList.add("oculto");
+
+
 }
 
 
