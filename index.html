@@ -1,37 +1,56 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Centro de Estética</title>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="stylesheet" href="css/styles.css">
-    <script defer src="js/main.js" ></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Centro de Estética</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script defer src="js/main.js"></script>
 </head>
+
 <body>
-    <header>
-        <h1>Centro de Estética</h1>
-    </header>
-    
-    <main>
-        <section class="descripcion">
-            <p class="descripcion">
-                <p>Este simulador permite seleccionar uno o varios servicios, elegir fecha y hora, y gestionar turnos. </p>
-            
-            </p>
-        </section>
+  <header>
+    <h1>Centro de Estética</h1>
+  </header>
+
+  <main>
+    <section class="descripcion">
+      <p>Este simulador permite seleccionar uno o varios servicios, elegir fecha y hora, y gestionar turnos.</p>
+    </section>
+
+    <section class="servicios">
+      <h2>Servicios Disponibles</h2>
+      <div id="listaServicios"></div>
+    </section>
+
+    <section id="turnosClientes">
+      <h2>Turnos Agendados</h2>
+      <div id="turnosAgendados"></div>
+      <button id="eliminarTodosTurnos">Eliminar Todos los Turnos</button>
+    </section>
+  </main>
+
+  <div id="reserva" class="modal oculto">
+    <div class="modal-contenido">
+      <h2>Reserva de Turno</h2>
+      <form id="formReserva">
+        <fieldset>
+          <legend>Datos del Cliente</legend>
+          <input type="text" id="clienteNombre" placeholder="Nombre" required>
+          <input type="text" id="clienteApellido" placeholder="Apellido" required>
+          <input type="email" id="clienteEmail" placeholder="Email" required>
+          <input type="tel" id="clienteTelefono" placeholder="Teléfono" required>
+        </fieldset>
+        <div id="calendario"></div>
         
-        <section class="servicios">
-            <h2>Servicios Disponibles</h2>
-            <div id="listaServicios"></div>
-        </section>
-    </main>
-    
-    <div id="reserva" class="modal oculto">
-        <div class="modal-contenido">
-            <div id="calendario"></div> 
+        <div id="errorReserva" style="color:red;display:none;"></div>
+        <div class="botones-modal">
+          <button type="button" id="confirmarReserva">Confirmar Reserva</button>
+          <button type="button" id="cerrarModal">Cancelar</button>
         </div>
+      </form>
     </div>
-    
+  </div>
+
 </body>
 </html>
