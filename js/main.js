@@ -6,7 +6,6 @@ const alertFlotante = document.createElement("div");
 alertFlotante.id = "alertFlotante";
 document.body.appendChild(alertFlotante);
 
-
 async function cargarServicios() {
   if (!localStorage.getItem("servicios")) {
     try {
@@ -24,7 +23,6 @@ async function cargarServicios() {
   mostrarServicios();
 }
 
-
 function mostrarServicios() {
   listaServicios.innerHTML = "";
 
@@ -41,7 +39,6 @@ function mostrarServicios() {
   });
 }
 
-
 document.addEventListener("click", (e) => {
   if (e.target.classList.contains("btn-agendar")) {
     const servicioId = parseInt(e.target.dataset.id);
@@ -57,9 +54,7 @@ document.addEventListener("click", (e) => {
     serviciosSeleccionados.splice(index, 1);
     actualizarAlertFlotante();
   }
-  
 });
-
 
 function actualizarAlertFlotante() {
   if (serviciosSeleccionados.length === 0) {
@@ -87,7 +82,6 @@ function actualizarAlertFlotante() {
   document.getElementById("finalizarSeleccion").addEventListener("click", abrirModalMultiple);
 }
 
-
 function abrirModalMultiple() {
   alertFlotante.style.display = "none";
   const modal = document.getElementById("reserva");
@@ -107,6 +101,11 @@ function abrirModalMultiple() {
   `;
 }
 
+// ✅ NUEVA función para validar la hora (debe estar entre 11:00 y 19:00)
+function horaValida(hora) {
+  const [h, m] = hora.split(":").map(Number);
+  return h >= 11 && h < 19;
+}
 
 function confirmarTurnos() {
   const nombre = document.getElementById("clienteNombre").value.trim();
@@ -131,6 +130,11 @@ function confirmarTurnos() {
     return;
   }
 
+  if (nuevosTurnos.some(t => !horaValida(t.hora))) {
+    mostrarError("El horario debe estar entre las 11:00 y las 19:00.");
+    return;
+  }
+
   const anteriores = JSON.parse(localStorage.getItem("turnos")) || [];
   const actualizados = [...anteriores, ...nuevosTurnos];
   localStorage.setItem("turnos", JSON.stringify(actualizados));
@@ -139,17 +143,13 @@ function confirmarTurnos() {
   actualizarAlertFlotante();
   mostrarTurnos();
   document.getElementById("reserva").classList.add("oculto");
-
-
 }
-
 
 function mostrarError(msg) {
   const error = document.getElementById("errorReserva");
   error.textContent = msg;
   error.style.display = "block";
 }
-
 
 function mostrarTurnos() {
   const turnos = JSON.parse(localStorage.getItem("turnos")) || [];
@@ -174,7 +174,6 @@ function mostrarTurnos() {
     `;
   });
 }
-
 
 const eliminarTodosBtn = document.getElementById("eliminarTodosTurnos");
 if (eliminarTodosBtn) {
