@@ -101,7 +101,7 @@ function abrirModalMultiple() {
   `;
 }
 
-// ✅ NUEVA función para validar la hora (debe estar entre 11:00 y 19:00)
+
 function horaValida(hora) {
   const [h, m] = hora.split(":").map(Number);
   return h >= 11 && h < 19;
