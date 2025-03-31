@@ -143,6 +143,8 @@ function confirmarTurnos() {
   actualizarAlertFlotante();
   mostrarTurnos();
   document.getElementById("reserva").classList.add("oculto");
+  mostrarConfirmacion("✅ ¡Tu turno fue agendado con éxito!");
+
 }
 
 function mostrarError(msg) {
@@ -150,6 +152,17 @@ function mostrarError(msg) {
   error.textContent = msg;
   error.style.display = "block";
 }
+
+function mostrarConfirmacion(msg) {
+  const mensaje = document.getElementById("mensajeConfirmacion");
+  mensaje.textContent = msg;
+  mensaje.classList.remove("oculto");
+
+  setTimeout(() => {
+    mensaje.classList.add("oculto");
+  }, 6000); 
+}
+
 
 function mostrarTurnos() {
   const turnos = JSON.parse(localStorage.getItem("turnos")) || [];
