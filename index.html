@@ -14,9 +14,8 @@
   </header>
 
   <div id="mensajeConfirmacion" class="oculto mensaje-confirmacion">
-    ✅ ¡Tu turno fue agendado con éxito!
+    
   </div>
-  
 
   <main>
     <section class="descripcion">
@@ -28,7 +27,7 @@
       <div id="listaServicios"></div>
     </section>
 
-    <section id="turnosClientes" class="turnosClientess">
+    <section id="turnosClientes">
       <h2>Turnos Agendados</h2>
       <div id="turnosAgendados"></div>
       <button id="eliminarTodosTurnos">Eliminar Todos los Turnos</button>
@@ -37,8 +36,8 @@
 
   <div id="reserva" class="modal oculto">
     <div class="modal-contenido">
-      <h2>Reserva de Turno </h2>
-      <form id="formReserva" >
+      <h2>Reserva de Turno</h2>
+      <form id="formReserva">
         <fieldset>
           <legend>Datos del Cliente</legend>
           <input type="text" id="clienteNombre" placeholder="Nombre" required>
@@ -46,9 +45,11 @@
           <input type="email" id="clienteEmail" placeholder="Email" required>
           <input type="tel" id="clienteTelefono" placeholder="Teléfono" required>
         </fieldset>
+
         <div id="calendario"></div>
-        
-        <div id="errorReserva" style="color:red;display:none;"></div>
+
+        <div id="errorReserva" style="color: red; display: none;"></div>
+
         <div class="botones-modal">
           <button type="button" id="confirmarReserva">Confirmar Reserva</button>
           <button type="button" id="cerrarModal">Cancelar</button>
@@ -56,6 +57,8 @@
       </form>
     </div>
   </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </body>
 </html>

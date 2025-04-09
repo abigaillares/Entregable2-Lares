@@ -4,7 +4,5 @@
     {"id": 3, "nombre": "Extensiones de Uñas", "duracion": "2h", "precio": 30000},
     {"id": 4, "nombre": "Capping Gel", "duracion": "1h 30m", "precio": 25000},
     {"id": 5, "nombre": "Pedicuría", "duracion": "1h", "precio": 15000},
-    {"id": 6, "nombre": "Pestañas y Cejas", "duracion": "45m", "precio": 12000},
-    {"id": 7, "nombre": "Servicios Masculinos", "duracion": "1h", "precio": 20000},
-    {"id": 8, "nombre": "Masajes Relajantes", "duracion": "1h 30m", "precio": 28000}
+    {"id": 6, "nombre": "Pestañas y Cejas", "duracion": "45m", "precio": 12000}
 ]
